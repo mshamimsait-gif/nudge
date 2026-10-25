@@ -1,0 +1,38 @@
+/* Nudge: disable accidental iPhone double-tap zoom */
+html,
+body,
+.app,
+header,
+main,
+.page,
+nav,
+button,
+a,
+.iconbtn,
+.fab,
+.row,
+.card,
+.summary,
+.totals,
+.month,
+.section,
+.record-actions {
+  touch-action: manipulation;
+}
+
+/* Keep form controls usable while preventing gesture-based page scaling. */
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+}
+
+/* Retain the 16px minimum that prevents focus zoom in iPhone Safari. */
+@supports (-webkit-touch-callout: none) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
