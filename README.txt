@@ -1,1 +1,1 @@
-Nudge final mobile redesign. Replace all files in the GitHub repository root. Keep the image files together with index.html.
+Nudge Tracker Final v2. Expense and income use separate category lists. Expense categories include Zomato / Swiggy and Blinkit / Zepto. Income categories are Salary, Refund, Gift, Bonus, Interest, and Other Income. Replace all files in the repository root.
