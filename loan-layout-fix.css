@@ -1,0 +1,95 @@
+/* Nudge: make Loan EMI match the Recurring and Expenses tab layout */
+#loans .totals.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: linear-gradient(135deg, #071b3d, #1451a1);
+  color: #fff;
+}
+
+#loans .totals.two > div {
+  min-width: 0;
+  padding: 22px 18px;
+  border-right: 1px solid rgba(255,255,255,.20);
+}
+
+#loans .totals.two > div:last-child {
+  border-right: 0;
+}
+
+#loans .totals.two span {
+  display: block;
+  min-height: 36px;
+  color: rgba(255,255,255,.76);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+#loans .totals.two b,
+#loans .totals.two > div:first-child b,
+#loans .totals.two > div:nth-child(2) b {
+  display: block;
+  margin: 7px 0 0;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+#loans #llist {
+  width: 100%;
+  margin-bottom: 76px;
+}
+
+#loans #llist .row {
+  padding: 15px 16px;
+}
+
+#loans #llist .row-main {
+  align-items: center;
+}
+
+#loans #llist .row-main > div {
+  min-width: 0;
+}
+
+#loans #llist .row-main h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#loans #llist .row-main b {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+#loans .record-actions {
+  padding-top: 2px;
+}
+
+@media (max-width: 390px) {
+  #loans .totals.two > div {
+    padding: 18px 13px;
+  }
+
+  #loans .totals.two span {
+    min-height: 34px;
+    font-size: 11px;
+  }
+
+  #loans .totals.two b,
+  #loans .totals.two > div:first-child b,
+  #loans .totals.two > div:nth-child(2) b {
+    font-size: 20px;
+  }
+}
