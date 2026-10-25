@@ -20,12 +20,10 @@
   function installButton() {
     const gear = document.getElementById('gear');
     if (!gear || document.getElementById('privacyToggle')) return;
-
     const wrapper = document.createElement('div');
     wrapper.className = 'header-actions';
     gear.parentNode.insertBefore(wrapper, gear);
     wrapper.appendChild(gear);
-
     const button = document.createElement('button');
     button.type = 'button';
     button.id = 'privacyToggle';
@@ -39,7 +37,12 @@
   }
 
   function amountElements() {
-    return document.querySelectorAll('#di,#de,#db,#te,#rt,#le,#lo,.row>b,.summary>b,.totals b');
+    return document.querySelectorAll([
+      '#di','#de','#db','#te','#rt','#le','#lo',
+      '#up .row b','#recent .row b','#txlist .row b',
+      '#rlist .row b','#llist .row b',
+      '.row-main > b','.summary > b','.totals b'
+    ].join(','));
   }
 
   function applyPrivacy() {
@@ -53,9 +56,7 @@
 
     amountElements().forEach(el => {
       if (hidden) {
-        if (!el.dataset.realAmount && el.textContent !== '••••••') {
-          el.dataset.realAmount = el.textContent;
-        }
+        if (el.textContent !== '••••••') el.dataset.realAmount = el.textContent;
         el.textContent = '••••••';
         el.classList.add('privacy-masked');
       } else {
@@ -70,14 +71,15 @@
 
   installButton();
 
-  if (typeof window.render === 'function') {
-    const originalRender = window.render;
-    window.render = function(...args) {
-      const result = originalRender.apply(this, args);
-      requestAnimationFrame(applyPrivacy);
-      return result;
-    };
-  }
+  const observer = new MutationObserver(mutations => {
+    if (!hidden) return;
+    const needsMask = mutations.some(m => {
+      if (m.type === 'childList') return [...m.addedNodes].some(n => n.nodeType === 1);
+      return false;
+    });
+    if (needsMask) requestAnimationFrame(applyPrivacy);
+  });
+  observer.observe(document.querySelector('main') || document.body, {childList:true, subtree:true});
 
   document.addEventListener('click', () => requestAnimationFrame(applyPrivacy));
   requestAnimationFrame(applyPrivacy);
