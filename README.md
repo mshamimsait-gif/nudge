@@ -1,2 +1,2 @@
-# nudge
-Private personal-finance progressive web app
+# Nudge
+Personal expense tracker progressive web app
