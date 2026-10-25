@@ -1,0 +1,45 @@
+/* Prevent iPhone Safari from zooming when a form field receives focus. */
+@supports (-webkit-touch-callout: none) {
+  .modal input,
+  .modal select,
+  .modal textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Keep the transaction sheet aligned to the iPhone viewport. */
+.modal,
+.modal form {
+  max-width: 100%;
+}
+
+.modal form {
+  width: 100%;
+  margin: 0;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal input,
+.modal select,
+.modal textarea,
+.modal button {
+  touch-action: manipulation;
+}
+
+/* Prevent long content from forcing the sheet wider than the screen. */
+.modal label,
+.modal input,
+.modal select,
+.modal textarea,
+.switch {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 430px) {
+  .modal form {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
